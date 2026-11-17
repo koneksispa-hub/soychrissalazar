@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Salazar | Bienestar emocional a través de la música</title>
+  <meta name="author" content="Chris Salazar">
+  <meta name="description" content="Mentor en bienestar emocional a través de la música. Programas, mentorías y experiencias sonoras para reconectar contigo.">
+  <meta property="og:title" content="Chris Salazar | Bienestar emocional a través de la música">
+  <meta property="og:description" content="Mentorías y experiencias sonoras para transformar emociones en claridad, calma y propósito.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chris Salazar | Bienestar emocional a través de la música">
+  <meta name="twitter:description" content="Mentorías y experiencias sonoras para transformar emociones en claridad, calma y propósito.">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap">
+
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #09090b;
+      --fg:          #fafafa;
+      --fg-muted:    #a1a1aa;
+      --border:      rgba(255,255,255,0.08);
+      --primary:     #8b5cf6;
+      --primary-dim: rgba(139,92,246,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* =============================================
+       SHARED UTILITIES
+    ============================================= */
+    .text-gradient {
+      background: linear-gradient(135deg, #a78bfa 0%, #c084fc 55%, #e879f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-violet {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+      color: #fff !important;
+      font-weight: 500;
+      transition: opacity .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 20px rgba(139,92,246,.35);
+    }
+    .btn-violet:hover {
+      opacity: .9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 28px rgba(139,92,246,.55);
+    }
+
+    .btn-ghost-line {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--fg) !important;
+      font-weight: 500;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-ghost-line:hover {
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.32);
+    }
+
+    .card-soft {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .card-soft:hover { background: rgba(255,255,255,.055); }
+
+    /* =============================================
+       HEADER / NAV
+    ============================================= */
+    header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9,9,11,.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    nav {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo { height: 40px; width: auto; }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .875rem;
+      color: var(--fg-muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+
+    .nav-cta {
+      border-radius: 9999px;
+      padding: .5rem 1.25rem;
+      font-size: .875rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-logo { height: 48px; }
+      .nav-links { display: flex; }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 9rem 0 6rem;
+      background:
+        radial-gradient(ellipse 100% 55% at 50% -15%, rgba(139,92,246,.18) 0%, transparent 68%),
+        var(--bg);
+    }
+
+    .hero-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .hero-eyebrow {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      color: var(--fg-muted);
+    }
+
+    .hero-title {
+      margin-top: 1.5rem;
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .hero-desc {
+      margin-top: 1.5rem;
+      max-width: 28rem;
+      font-size: 1.125rem;
+      color: var(--fg-muted);
+    }
+
+    .hero-cta {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .hero-cta a {
+      border-radius: 9999px;
+      padding: .75rem 1.75rem;
+      font-size: .875rem;
+    }
+
+    /* Photo */
+    .hero-photo-wrap { position: relative; }
+
+    .hero-photo-glow {
+      position: absolute;
+      inset: 4rem 1.5rem 0;
+      border-radius: 9999px;
+      background: var(--primary-dim);
+      filter: blur(60px);
+    }
+
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top;
+      filter: drop-shadow(0 25px 50px rgba(0,0,0,.55));
+      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      mask-image:         linear-gradient(to bottom, black 78%, transparent 100%);
+    }
+    @media (min-width: 768px) { .hero-photo { height: 520px; } }
+
+    /* =============================================
+       MÉTODO
+    ============================================= */
+    #metodo {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .metodo-title { max-width: 28rem; }
+
+    .metodo-grid {
+      margin-top: 3.5rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) { .metodo-grid { grid-template-columns: repeat(3,1fr); } }
+
+    .metodo-card { border-radius: 1rem; padding: 2rem; }
+
+    .metodo-num  { font-size: .875rem; color: var(--primary); }
+
+    .metodo-card-title {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .metodo-card-desc {
+      margin-top: .75rem;
+      font-size: .875rem;
+      line-height: 1.65;
+      color: var(--fg-muted);
+    }
+
+    /* =============================================
+       PROGRAMAS
+    ============================================= */
+    #programas {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.015);
+      padding: 6rem 0;
+    }
+
+    .programas-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .programas-list {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .programa-row {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      gap: 1rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .programa-row { grid-template-columns: 1fr 2fr auto; }
+    }
+
+    .programa-name { font-size: 1.25rem; font-weight: 600; }
+
+    .programa-desc {
+      font-size: .875rem;
+      line-height: 1.65;
+      color: var(--fg-muted);
+    }
+
+    .programa-tag {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    /* =============================================
+       SOBRE MÍ
+    ============================================= */
+    #sobre-mi {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    .sobre-mi-text {
+      margin-top: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 42rem;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: var(--fg-muted);
+    }
+
+    .sobre-mi-firma {
+      margin: 2.5rem auto 0;
+      height: 64px;
+      width: auto;
+      opacity: .9;
+    }
+    @media (min-width: 768px) { .sobre-mi-firma { height: 80px; } }
+
+    /* =============================================
+       CONTACTO / CTA
+    ============================================= */
+    #contacto {
+      border-top: 1px solid var(--border);
+      padding: 6rem 0;
+      background:
+        radial-gradient(ellipse 85% 55% at 50% -10%, rgba(139,92,246,.16) 0%, transparent 65%),
+        var(--bg);
+    }
+
+    .contacto-inner {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .contacto-title {
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .contacto-desc {
+      margin-top: 1.25rem;
+      font-size: .9rem;
+      color: var(--fg-muted);
+    }
+
+    .contacto-cta {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+    }
+    .contacto-cta a {
+      border-radius: 9999px;
+      padding: .875rem 2rem;
+      font-size: .875rem;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) { .footer-inner { flex-direction: row; } }
+
+    .footer-logo { height: 32px; width: auto; opacity: .8; }
+
+    .footer-copy { font-size: .875rem; color: var(--fg-muted); }
+
+    /* =============================================
+       FLOATING WHATSAPP
+    ============================================= */
+    .wa-fab {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 50;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+      box-shadow: 0 4px 20px rgba(139,92,246,.5);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-fab:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 30px rgba(139,92,246,.7);
+    }
+    .wa-fab svg { width: 28px; height: 28px; fill: white; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════ -->
+<header>
+  <nav>
+    <img
+      src="img/logo-blanco.png"
+      alt="Chris Salazar"
+      class="nav-logo">
+
+    <ul class="nav-links">
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#programas">Programas</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+    </ul>
+
+    <a href="https://wa.me/573154128762"
+       target="_blank" rel="noopener noreferrer"
+       class="btn-violet nav-cta">
+      Agenda una sesión
+    </a>
+  </nav>
+</header>
+
+<!-- ══ HERO ════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Copy -->
+    <div>
+      <p class="hero-eyebrow">SOY CHRIS SALAZAR</p>
+      <h1 class="hero-title">
+        Bienestar emocional<br>
+        <span class="text-gradient">a través de la música</span>
+      </h1>
+      <p class="hero-desc">
+        Mentor y músico. Acompaño a personas y equipos a transformar
+        lo que sienten en claridad, calma y propósito.
+      </p>
+      <div class="hero-cta">
+        <a href="#contacto" class="btn-violet">Empieza hoy</a>
+        <a href="#metodo"   class="btn-ghost-line">Conoce el método</a>
+      </div>
+    </div>
+
+    <!-- Photo -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <img
+        src="img/chris-foto.png"
+        alt="Retrato de Chris Salazar"
+        class="hero-photo">
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ MÉTODO ══════════════════════════════════════ -->
+<section id="metodo">
+  <h2 class="section-title metodo-title">Un método simple, en tres movimientos</h2>
+  <div class="metodo-grid">
+
+    <div class="metodo-card card-soft">
+      <span class="metodo-num">01</span>
+      <h3 class="metodo-card-title">Escucha consciente</h3>
+      <p class="metodo-card-desc">
+        Aprende a reconocer lo que sientes usando el sonido como espejo emocional.
+      </p>
+    </div>
+
+    <div class="metodo-card card-soft">
+      <span class="metodo-num">02</span>
+      <h3 class="metodo-card-title">Regulación sonora</h3>
+      <p class="metodo-card-desc">
+        Ritmo, respiración y frecuencia para calmar el sistema nervioso en minutos.
+      </p>
+    </div>
+
+    <div class="metodo-card card-soft">
+      <span class="metodo-num">03</span>
+      <h3 class="metodo-card-title">Expresión y propósito</h3>
+      <p class="metodo-card-desc">
+        Convierte tu historia en voz, movimiento y decisiones con sentido.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PROGRAMAS ═══════════════════════════════════ -->
+<section id="programas">
+  <div class="programas-inner">
+    <h2 class="section-title">Programas</h2>
+    <div class="programas-list">
+
+      <div class="programa-row">
+        <h3 class="programa-name">Mentoría 1:1</h3>
+        <p class="programa-desc">
+          Acompañamiento personal de 8 semanas para atravesar un momento de cambio
+          con herramientas musicales y emocionales.
+        </p>
+        <span class="programa-tag">8 semanas · Online</span>
+      </div>
+
+      <div class="programa-row">
+        <h3 class="programa-name">Experiencias sonoras</h3>
+        <p class="programa-desc">
+          Sesiones grupales en vivo de inmersión musical para liberar tensión,
+          reconectar y volver al cuerpo.
+        </p>
+        <span class="programa-tag">Presencial · Grupos</span>
+      </div>
+
+      <div class="programa-row">
+        <h3 class="programa-name">Programas para empresas</h3>
+        <p class="programa-desc">
+          Talleres de bienestar emocional y cohesión de equipos a través de
+          ritmo, escucha y creación colectiva.
+        </p>
+        <span class="programa-tag">In-company · 2–8 h</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOBRE MÍ ════════════════════════════════════ -->
+<section id="sobre-mi">
+  <h2 class="section-title">Sobre mí</h2>
+  <p class="sobre-mi-text">
+    Durante más de dos décadas la música ha sido mi lenguaje para entender lo que
+    las palabras no alcanzan. Hoy uso ese lenguaje como herramienta de mentoría:
+    sesiones donde el sonido, la respiración y la conversación se convierten en
+    un camino concreto hacia el bienestar emocional.
+  </p>
+  <img
+    src="img/firma-blanco.webp"
+    alt="Firma de Chris Salazar"
+    class="sobre-mi-firma">
+</section>
+
+<!-- ══ CONTACTO ════════════════════════════════════ -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <h2 class="contacto-title">
+      Tu bienestar también <span class="text-gradient">suena</span>
+    </h2>
+    <p class="contacto-desc">
+      Agenda una conversación de 20 minutos y definamos juntos el siguiente paso.
+    </p>
+    <div class="contacto-cta">
+      <a href="https://wa.me/573154128762"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-violet">WhatsApp</a>
+      <a href="https://soychrissalazar.lovable.app/contacto"
+         class="btn-ghost-line">Escríbeme</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <img
+      src="img/logo-blanco.png"
+      alt="Chris Salazar"
+      class="footer-logo">
+    <p class="footer-copy">© 2026 Chris Salazar. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- ══ FLOATING WHATSAPP ═══════════════════════════ -->
+<a href="https://wa.me/573152869266"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Escríbeme por WhatsApp"
+   class="wa-fab">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9
+             9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82
+             9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05
+             -.2-.31a8.15 8.15 0 0 1-1.25-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83
+             2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.25 8.23Zm4.52-6.17c-.25-.12
+             -1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.79.97-.14.16-.29.18-.54.06
+             -.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5
+             .11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34
+             -.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.04
+             s.87 2.37.99 2.53c.12.17 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16
+             1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/>
+  </svg>
+</a>
+
+</body>
+</html>
